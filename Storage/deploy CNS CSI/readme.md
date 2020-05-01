@@ -187,3 +187,29 @@ ProviderID:                  vsphere://4210371f-bf87-3892-6e18-f8d739b9f099
 ProviderID:                  vsphere://4210fbb5-e5a5-3435-85ce-8d1c23c8dbbf
 ProviderID:                  vsphere://4210cdb6-e4d3-336c-4f70-9037356be36d
 ```
+
+
+
+## Annex: CSI Controller and CSI Node Pods
+
+<https://content.cdntwrk.com/files/aHViPTYzOTc1JmNtZD1pdGVtZWRpdG9yaW1hZ2UmZmlsZW5hbWU9aXRlbWVkaXRvcmltYWdlXzVlODUxYjRiODRjNDIucG5nJnZlcnNpb249MDAwMCZzaWc9NTMzYjZiMmQyMzRlOGI5YjhkOGFhNTI3OWIzMDY5MGM%253
+
+CSI Controller Pod:
+```
+kubectl describe pod vsphere-csi-controller-0 -n kube-system | grep Image:
+    Image:         quay.io/k8scsi/csi-attacher:v1.1.1
+    Image:         gcr.io/cloud-provider-vsphere/csi/release/driver:v1.0.2
+    Image:         quay.io/k8scsi/livenessprobe:v1.1.0
+    Image:         gcr.io/cloud-provider-vsphere/csi/release/syncer:v1.0.2
+    Image:         quay.io/k8scsi/csi-provisioner:v1.2.2
+```
+
+
+CSI Node Pod:
+```
+kubectl describe pod vsphere-csi-node-4mg9g -n kube-system | grep Image:
+    Image:         quay.io/k8scsi/csi-node-driver-registrar:v1.1.0
+    Image:         gcr.io/cloud-provider-vsphere/csi/release/driver:v1.0.2
+    Image:         quay.io/k8scsi/livenessprobe:v1.1.0
+```
+
