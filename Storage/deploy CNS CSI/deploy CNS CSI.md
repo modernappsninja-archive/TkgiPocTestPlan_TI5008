@@ -10,7 +10,7 @@ This page contains information to deploy CNS CSI on a K8s cluster deployed by TK
 
 ## manifest files
 
-* file1.yaml
-* file2.yaml
+*File1.yaml
+*File2.yaml
 
 ## procedure
