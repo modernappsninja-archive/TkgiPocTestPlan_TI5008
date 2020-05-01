@@ -10,7 +10,6 @@ Very useful link to understand CSI more in details:
 <https://tanzu.vmware.com/content/blog/supercharging-kubernetes-storage-with-csi>
 
 
-CSI Architecture:
 ![CSI architecture](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20CNS%20CSI/CSI.png)
 
 
