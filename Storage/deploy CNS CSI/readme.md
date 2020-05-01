@@ -4,6 +4,7 @@
 This page contains information to deploy CNS CSI on a K8s cluster deployed by TKGI.
 
 Very useful link to understand CSI more in details:
+
 <https://tanzu.vmware.com/content/blog/supercharging-kubernetes-storage-with-csi>
 
 
