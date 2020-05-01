@@ -1,4 +1,4 @@
-# deploy CSI Storage Plugin on TKGI-based K8s Cluster
+# deploy CSI Storage Plugin
 
 ## Introduction
 This page contains information to deploy CSI storage plugin on a K8s cluster deployed by TKGI.
