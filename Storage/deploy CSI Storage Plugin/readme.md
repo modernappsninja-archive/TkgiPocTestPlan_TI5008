@@ -1,7 +1,7 @@
 # deploy vSphere CSI Storage Plugin
 
 ## Introduction
-This page contains information to deploy vSphere CSI storage plugin on a K8s cluster deployed by TKGI.
+This page contains information to deploy vSphere CSI storage plugin on a K8s cluster created by TKGI.
 
 ### CSI Architecture
 
