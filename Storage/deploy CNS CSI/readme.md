@@ -24,7 +24,7 @@ In case of NSX-T integration, what is means is the Floating IP allocated to the 
 ## Step1: Deploy a K8s Cluster
 
 ```
-pks create-cluster tkgi-cluster-1 --external-hostname tkgi-cluster-1 --plan large
+$ pks create-cluster tkgi-cluster-1 --external-hostname tkgi-cluster-1 --plan large
 ```
 
 Reminder:
@@ -50,12 +50,12 @@ datacenters = "vSAN_Datacenter"
 Then issue the command:
 
 ```
-kubectl create secret generic vsphere-config-secret --from-file=csi-vsphere.conf --namespace=kube-system
+$ kubectl create secret generic vsphere-config-secret --from-file=csi-vsphere.conf --namespace=kube-system
 ```
 
 Check:
 ```
-**kubectl get secret/vsphere-config-secret -n kube-system**
+$ kubectl get secret/vsphere-config-secret -n kube-system
 NAME                    TYPE     DATA   AGE
 vsphere-config-secret   Opaque   1      37s
 ```
