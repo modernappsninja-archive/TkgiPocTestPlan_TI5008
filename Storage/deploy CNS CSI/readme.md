@@ -8,6 +8,10 @@ Very useful link to understand CSI more in details:
 <https://tanzu.vmware.com/content/blog/supercharging-kubernetes-storage-with-csi>
 
 
+CSI Architecture:
+![CSI architecture](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20CNS%20CSI/CSI.png)
+
+
 ## Pre-requisites
 
 - TKGI version 1.7.0
@@ -77,13 +81,13 @@ clusterrolebinding.rbac.authorization.k8s.io/vsphere-csi-controller-binding crea
 
 Check:
 
-list the service account:
+list the ServiceAccount:
 ```
 $ kubectl get sa -n kube-system | grep csi
 vsphere-csi-controller               1         50s
 ```
 
-list the cluster roles:
+list the ClusterRole:
 ```
 $ kubectl get clusterrole -n kube-system | grep csi
 system:csi-external-attacher                                           23h   
@@ -91,13 +95,13 @@ system:csi-external-provisioner                                        23h
 vsphere-csi-controller-role                                            29s
 ```
 
-list the cluster role binding:
+list the ClusterRoleBinding:
 ```
 $ kubectl get clusterrolebinding -n kube-system | grep csi
 vsphere-csi-controller-binding                         3m39s
 ```
 
-## Step4: Install the vSphere CSI Controller and CSI driver
+## Step4: Install the vSphere CSI Controller StatefulSet and CSI driver
 
 ```
 $ kubectl apply -f vsphere-csi-controller-ss-data-1.yaml
@@ -107,7 +111,7 @@ csidriver.storage.k8s.io/csi.vsphere.vmware.com created
 
 Check:
 
-list the pod:
+list the CSI Controller pod:
 ```
 $ kubectl get pod -n kube-system
 NAME                              READY   STATUS    RESTARTS   AGE
@@ -115,7 +119,7 @@ NAME                              READY   STATUS    RESTARTS   AGE
 vsphere-csi-controller-0          5/5     Running   0          2m53s
 ```
 
-list the stateful set:
+list the CSI Controller StatefulSet:
 ```
 $ kubectl get statefulset -n kube-system
 NAME                     READY   AGE
@@ -129,7 +133,7 @@ NAME                     CREATED AT
 csi.vsphere.vmware.com   2020-04-01T17:56:59Z
 ```
 
-## Step5: Install the vSphere CSI Node
+## Step5: Install the vSphere CSI Node Daemonset
 
 ```
 $ kubectl apply -f vsphere-csi-node-ds-data.yaml
@@ -138,7 +142,7 @@ daemonset.apps/vsphere-csi-node created
 
 Check:
 
-list the pods:
+list the CSI Node pods:
 ```
 $ kubectl get pod -n kube-system
 NAME                              READY   STATUS    RESTARTS   AGE
@@ -149,19 +153,13 @@ vsphere-csi-node-4cs9k            3/3     Running   0          35s
 vsphere-csi-node-xgl9q            3/3     Running   0          35s
 ```
 
-list the daemonset:
+list the CSI Node Daemonset:
 ```
 $ kubectl get daemonset -n kube-system
 NAME               DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
 vsphere-csi-node   3         3         3       3            3           <none>          86s
 ```
 
-list the statefulset:
-```
-$ kubectl get statefulset --namespace=kube-system
-NAME                     READY   AGE
-vsphere-csi-controller   1/1     13m
-```
 
 list CSI nodes:
 ```
@@ -172,12 +170,6 @@ a4061fe4-7560-419a-91cc-2f92c4db5593   2020-04-01T18:03:13Z
 bf5fcafa-1fcd-4676-a8c8-917c84223c89   2020-04-01T18:03:13Z
 ```
 
-list CSI driver:
-```
-$ kubectl get csidrivers
-NAME                     CREATED AT
-csi.vsphere.vmware.com   2020-04-01T17:56:59Z
-```
 
 verify ProviderID has been added the nodes:
 
@@ -192,7 +184,6 @@ ProviderID:                  vsphere://4210cdb6-e4d3-336c-4f70-9037356be36d
 
 ## Annex: CSI Controller and CSI Node Pods
 
-![CSI architecture](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20CNS%20CSI/CSI.png)
 
 CSI Controller Pod:
 ```
