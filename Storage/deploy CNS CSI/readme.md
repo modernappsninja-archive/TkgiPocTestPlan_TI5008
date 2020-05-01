@@ -199,7 +199,7 @@ kubectl describe pod vsphere-csi-controller-0 -n kube-system | grep Image:
 
 CSI Node Pod:
 ```
-kubectl describe pod vsphere-csi-node-4mg9g -n kube-system | grep Image:
+kubectl describe pod vsphere-csi-node-4cs9k -n kube-system | grep Image:
     Image:         quay.io/k8scsi/csi-node-driver-registrar:v1.1.0
     Image:         gcr.io/cloud-provider-vsphere/csi/release/driver:v1.0.2
     Image:         quay.io/k8scsi/livenessprobe:v1.1.0
