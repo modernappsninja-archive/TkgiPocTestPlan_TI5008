@@ -1,7 +1,7 @@
-# deploy CNS CSI
+# deploy CSI Storage Plugin on TKGI-based K8s Cluster
 
 ## Introduction
-This page contains information to deploy CNS CSI on a K8s cluster deployed by TKGI.
+This page contains information to deploy CSI storage plugin on a K8s cluster deployed by TKGI.
 
 ### CSI Architecture
 
@@ -10,7 +10,7 @@ Very useful link to understand CSI more in details:
 <https://tanzu.vmware.com/content/blog/supercharging-kubernetes-storage-with-csi>
 
 
-![CSI architecture](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20CNS%20CSI/CSI.png)
+![CSI architecture](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20CSI%20Storage%20Plugin/CSI.png)
 
 
 ## Pre-requisites
