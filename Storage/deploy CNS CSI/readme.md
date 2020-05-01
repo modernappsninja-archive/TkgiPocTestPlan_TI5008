@@ -192,7 +192,7 @@ ProviderID:                  vsphere://4210cdb6-e4d3-336c-4f70-9037356be36d
 
 ## Annex: CSI Controller and CSI Node Pods
 
-![alt text](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20CNS%20CSI/CSI.png "CSI architecture")
+![CSI architecture](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20CNS%20CSI/CSI.png)
 
 CSI Controller Pod:
 ```
