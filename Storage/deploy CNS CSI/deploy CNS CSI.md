@@ -49,6 +49,6 @@ datacenters = "vSAN_Datacenter"
 Then issue the command:
 
 ```
-$kubectl create secret generic vsphere-config-secret --from-file=csi-vsphere.conf --namespace=kube-system
-secret/vsphere-config-secret created
+kubectl create secret generic vsphere-config-secret --from-file=csi-vsphere.conf --namespace=kube-system
 ```
+
