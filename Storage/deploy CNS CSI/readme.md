@@ -24,7 +24,7 @@ In case of NSX-T integration, what is means is the Floating IP allocated to the 
 ## Step1: Deploy a K8s Cluster
 
 ```
-#pks create-cluster tkgi-cluster-1 --external-hostname tkgi-cluster-1 --plan large
+pks create-cluster tkgi-cluster-1 --external-hostname tkgi-cluster-1 --plan large
 ```
 
 Reminder:
