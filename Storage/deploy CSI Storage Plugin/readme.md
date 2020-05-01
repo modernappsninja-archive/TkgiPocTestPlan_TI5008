@@ -1,6 +1,7 @@
 # deploy vSphere CSI Storage Plugin
 
 ## Introduction
+
 This page contains information to deploy vSphere CSI storage plugin on a K8s cluster created by TKGI.
 
 ### CSI Architecture
@@ -9,9 +10,7 @@ Very useful link to understand CSI more in details:
 
 <https://tanzu.vmware.com/content/blog/supercharging-kubernetes-storage-with-csi>
 
-
 ![CSI architecture](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20CSI%20Storage%20Plugin/CSI.png)
-
 
 ## Pre-requisites
 
@@ -21,7 +20,7 @@ Very useful link to understand CSI more in details:
 
 ### Network Requirement
 
-- All TKGI k8s worker node VMs will need access to vCenter. 
+- All TKGI k8s worker node VMs will need access to vCenter.
 
 In case of NSX-T integration, what is means is the Floating IP allocated to the SNAT of this namespace in the T0 (or T1 if shared T1 model is used) MUST be able to reach vCenter.
 
@@ -38,13 +37,14 @@ $ pks create-cluster tkgi-cluster-1 --external-hostname tkgi-cluster-1 --plan la
 ```
 
 Reminder:
-TKGI plan named `large` has the option `Allowed Provileged` enabled 
+TKGI plan named `large` has the option `Allowed Provileged` enabled.
 
 ## Step2: Create a CSI Secret
 
 Create the following file anywhere in your system:
 
 csi-vsphere.conf
+
 ```
 [Global]
 cluster-id = "pks-cluster-1-shared-t1"
