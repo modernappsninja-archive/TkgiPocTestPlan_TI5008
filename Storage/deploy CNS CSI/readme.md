@@ -17,8 +17,9 @@ In case of NSX-T integration, what is means is the Floating IP allocated to the 
 
 ## Manifest Files
 
-- File1.yaml
-- File2.yaml
+- vsphere-csi-controller-rbac.yaml
+- vsphere-csi-controller-ss-data-1.yaml
+- vsphere-csi-node-ds-data.yaml
 
 ## Step1: Deploy a K8s Cluster
 
