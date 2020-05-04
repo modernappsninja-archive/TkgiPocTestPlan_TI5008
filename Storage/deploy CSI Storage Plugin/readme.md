@@ -61,11 +61,11 @@ datacenters = "vSAN_Datacenter"
 
 In the above exemple:
 
-- **pks-cluster-1-shared-t1**: unique ID for the K8s cluster (must be unique per K8s cluster)
-- **10.1.1.1**: IP of vCenter
+- **`pks-cluster-1-shared-t1`**: unique ID for the K8s cluster (must be unique per K8s cluster)
+- **`10.1.1.1`**: IP of vCenter
 - **`administrator@vsphere.local`**: vCenter username
-- **password**: vCenter username password
-- **vSAN_Datacenter**: name of the vCenter datacenter
+- **`password`**: vCenter username password
+- **`vSAN_Datacenter`**: name of the vCenter datacenter
 
 
 Note: in case a specific vCenter user with less privileges than the administrator must be used, creater a user and then assign one of the following role as listed here:
