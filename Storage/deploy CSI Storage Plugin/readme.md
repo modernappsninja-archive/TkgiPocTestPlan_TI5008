@@ -63,7 +63,7 @@ In the above exemple:
 
 - **pks-cluster-1-shared-t1**: unique ID for the K8s cluster (must be unique per K8s cluster)
 - **10.1.1.1**: IP of vCenter
-- **administrator\@vsphere.local**: vCenter username
+- **`administrator@vsphere.local`**: vCenter username
 - **password**: vCenter username password
 - **vSAN_Datacenter**: name of the vCenter datacenter
 
