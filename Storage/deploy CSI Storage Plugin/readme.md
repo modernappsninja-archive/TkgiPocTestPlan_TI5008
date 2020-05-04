@@ -62,12 +62,16 @@ datacenters = "vSAN_Datacenter"
 In the above exemple:
 
 **10.1.1.1**: IP of vCenter
+
 **administrator@vsphere.local**: vCenter username
+
 **<password>**: vCenter username password
+
 **vSAN_Datacenter**: name of the vCenter datacenter
 
+
 Note: in case a specific vCenter user with less privileges than the administrator must be used, creater a user and then assign one of the following role as listed here:
-[CSI vCenter roles and permissions](https://docs.vmware.com/en/VMware-vSphere/6.7/Cloud-Native-Storage/GUID-AEB07597-F303-4FDD-87D9-0FDA4836E5BB.html)
+[Cloud Native Storage Roles and Privileges](https://docs.vmware.com/en/VMware-vSphere/6.7/Cloud-Native-Storage/GUID-AEB07597-F303-4FDD-87D9-0FDA4836E5BB.html)
 
 
 
