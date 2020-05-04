@@ -1,4 +1,4 @@
-# deploy vSphere CSI Storage Plugin
+# deploy vSphere CSI Storage Plugin on a TKGI based K8s Cluster
 
 ## Introduction
 
@@ -69,6 +69,7 @@ In the above exemple:
 
 Note: in case a specific vCenter user with less privileges than the administrator must be used, creater a user and then assign one of the following role as listed here:
 [Cloud Native Storage Roles and Privileges](https://docs.vmware.com/en/VMware-vSphere/6.7/Cloud-Native-Storage/GUID-AEB07597-F303-4FDD-87D9-0FDA4836E5BB.html)
+
 
 
 
