@@ -14,8 +14,8 @@ Very useful link to understand CSI more in details:
 
 ## Pre-requisites
 
-- TKGI version 1.7.0
-- vSphere 6.7U3 (or later)
+- TKGI version 1.7.0 and above
+- vSphere 6.7U3 and above
 - `Allowed Provileged` enabled on the TKGI plan used to deploy the K8s cluster
 
 ### Network Requirement
@@ -25,6 +25,8 @@ Very useful link to understand CSI more in details:
 In case of NSX-T integration, what is means is the Floating IP allocated to the SNAT of this namespace in the T0 (or T1 if shared T1 model is used) MUST be able to reach vCenter.
 
 ## Manifest Files
+
+All the following manifests files are provided inside this directory:
 
 - vsphere-csi-controller-rbac.yaml
 - vsphere-csi-controller-ss-data-1.yaml
@@ -52,10 +54,22 @@ cluster-id = "pks-cluster-1-shared-t1"
 [VirtualCenter "10.1.1.1"]
 insecure-flag = "true"
 user = "administrator@vsphere.local"
-password = "VMware1!"
+password = "<password>"
 port = "443"
 datacenters = "vSAN_Datacenter"
 ```
+
+In the above exemple:
+
+**10.1.1.1**: IP of vCenter
+**administrator@vsphere.local**: vCenter username
+**<password>**: vCenter username password
+**vSAN_Datacenter**: name of the vCenter datacenter
+
+Note: in case a specific vCenter user with less privileges than the administrator must be used, creater a user and then assign one of the following role as listed here:
+[CSI vCenter roles and permissions](https://docs.vmware.com/en/VMware-vSphere/6.7/Cloud-Native-Storage/GUID-AEB07597-F303-4FDD-87D9-0FDA4836E5BB.html)
+
+
 
 Then issue the command:
 
