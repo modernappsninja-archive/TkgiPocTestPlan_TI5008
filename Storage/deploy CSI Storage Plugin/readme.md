@@ -4,7 +4,7 @@
 
 This page contains information to deploy vSphere CSI storage plugin on a K8s cluster created by TKGI.
 
-Version of vSphere CSI storage plugin is 1.0.2.
+Version of vSphere CSI Driver Image is 1.0.2.
 
 
 ### CSI Architecture
