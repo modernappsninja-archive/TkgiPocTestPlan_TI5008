@@ -23,9 +23,9 @@ Very useful link to understand CSI more in details:
 
 ### Network Requirement
 
-- All TKGI k8s worker node VMs will need access to vCenter. In fact, only pod vsphere-csi-controller-0 needs access to vCenter but because it can be scheduled on any worker node, then the requirement for all worker nodes applies.
+- TKGI with Flannel: TKGI k8s worker nodes will need access to vCenter. In fact, only pod vsphere-csi-controller-0 needs access to vCenter but because it can be scheduled on any worker node, then the requirement for all worker nodes applies.
 
-In case of NSX-T integration, what is means is the Floating IP allocated to the SNAT for the namespace kube-system in  T0 (or T1 if shared T1 model is used) MUST be able to reach vCenter.
+- TKGI with NSX-T integration: the Floating IP allocated to the SNAT for the namespace kube-system in  T0 (or T1 if shared T1 model is used) MUST be able to reach vCenter.
 
 ## Manifest Files
 
