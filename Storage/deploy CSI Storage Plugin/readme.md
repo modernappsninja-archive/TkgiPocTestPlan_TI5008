@@ -4,6 +4,9 @@
 
 This page contains information to deploy vSphere CSI storage plugin on a K8s cluster created by TKGI.
 
+Version of vSphere CSI storage plugin is 1.0.2.
+
+
 ### CSI Architecture
 
 Very useful link to understand CSI more in details:
@@ -20,9 +23,9 @@ Very useful link to understand CSI more in details:
 
 ### Network Requirement
 
-- All TKGI k8s worker node VMs will need access to vCenter.
+- All TKGI k8s worker node VMs will need access to vCenter. In fact, only pod vsphere-csi-controller-0 needs access to vCenter but because it can be scheduled on any worker node, then the requirement for all worker nodes applies.
 
-In case of NSX-T integration, what is means is the Floating IP allocated to the SNAT of this namespace in the T0 (or T1 if shared T1 model is used) MUST be able to reach vCenter.
+In case of NSX-T integration, what is means is the Floating IP allocated to the SNAT for the namespace kube-system in  T0 (or T1 if shared T1 model is used) MUST be able to reach vCenter.
 
 ## Manifest Files
 
@@ -200,25 +203,46 @@ ProviderID:                  vsphere://4210cdb6-e4d3-336c-4f70-9037356be36d
 
 
 
-## Annex: CSI Controller and CSI Node Pods
+## Annex: Containers inside CSI Controller pod and CSI Node pod
 
 
 CSI Controller Pod:
 ```
 kubectl describe pod vsphere-csi-controller-0 -n kube-system | grep Image:
+Containers:
+  csi-attacher:
+    Container ID:  docker://ada8e66ef776adc8884e3a26af3381668766ce31a3e320305643445525019e04
     Image:         quay.io/k8scsi/csi-attacher:v1.1.1
+  vsphere-csi-controller:
+    Container ID:  docker://15a16675a58f6ee6beabdc5324851cdf059820c554bf98e5b76416e0f26744d6
     Image:         gcr.io/cloud-provider-vsphere/csi/release/driver:v1.0.2
+  liveness-probe:
+    Container ID:  docker://57c9498613fcb30b67963797a28a125bae2bb3d21e6ff9d18b521236be54a576
     Image:         quay.io/k8scsi/livenessprobe:v1.1.0
+  vsphere-syncer:
+    Container ID:  docker://4196c2be0f21cc34b15677715b9edd529fd031c8fc667380847635180fbfe553
     Image:         gcr.io/cloud-provider-vsphere/csi/release/syncer:v1.0.2
+  csi-provisioner:
+    Container ID:  docker://9eab0125e0486500301c6c799631cd776b34ca7eb4aa2f2e54624f90bed2fd76
     Image:         quay.io/k8scsi/csi-provisioner:v1.2.2
+
+
+
 ```
 
 
 CSI Node Pod:
 ```
 kubectl describe pod vsphere-csi-node-4cs9k -n kube-system | grep Image:
+Containers:
+  node-driver-registrar:
+    Container ID:  docker://8f8c7893ebf4282faf33e0eafe7580a0db7ef4ce19a722d6ea32b2f929f4a4a8
     Image:         quay.io/k8scsi/csi-node-driver-registrar:v1.1.0
+  vsphere-csi-node: <===== CSI Driver as shown above
+    Container ID:  docker://d0e2c5bf08d507a4dd077659fcc331a4f9a09ae6cb4f7ee9622f502cefeebc3b
     Image:         gcr.io/cloud-provider-vsphere/csi/release/driver:v1.0.2
+  liveness-probe:
+    Container ID:  docker://09f24ce44e926b505ca3843fa42ca27a7a88299e2a1fe47c482fb28429345b4e
     Image:         quay.io/k8scsi/livenessprobe:v1.1.0
 ```
 
