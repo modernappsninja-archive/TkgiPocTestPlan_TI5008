@@ -208,7 +208,7 @@ ProviderID:                  vsphere://4210cdb6-e4d3-336c-4f70-9037356be36d
 
 CSI Controller Pod:
 ```
-kubectl describe pod vsphere-csi-controller-0 -n kube-system | grep Image:
+$ kubectl describe pod vsphere-csi-controller-0 -n kube-system | grep Image:
 Containers:
   csi-attacher:
     Container ID:  docker://ada8e66ef776adc8884e3a26af3381668766ce31a3e320305643445525019e04
@@ -233,12 +233,12 @@ Containers:
 
 CSI Node Pod:
 ```
-kubectl describe pod vsphere-csi-node-4cs9k -n kube-system | grep Image:
+$ kubectl describe pod vsphere-csi-node-4cs9k -n kube-system | grep Image:
 Containers:
   node-driver-registrar:
     Container ID:  docker://8f8c7893ebf4282faf33e0eafe7580a0db7ef4ce19a722d6ea32b2f929f4a4a8
     Image:         quay.io/k8scsi/csi-node-driver-registrar:v1.1.0
-  vsphere-csi-node: <===== CSI Driver as shown above
+  vsphere-csi-node:
     Container ID:  docker://d0e2c5bf08d507a4dd077659fcc331a4f9a09ae6cb4f7ee9622f502cefeebc3b
     Image:         gcr.io/cloud-provider-vsphere/csi/release/driver:v1.0.2
   liveness-probe:
