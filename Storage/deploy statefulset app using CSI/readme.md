@@ -158,17 +158,11 @@ CREATE TABLE emp(emp_id int PRIMARY KEY, emp_name text, emp_city text, emp_sal v
 
 
 INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal) VALUES ( 4500000 , 'emp1', 'SFO', 999, 1000000);
-
 INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal) VALUES ( 4500001 , 'emp2', 'SFO', 999, 1000000);
-
 INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal) VALUES ( 4500002 , 'emp3', 'SFO', 999, 1000000);
-
 INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal) VALUES ( 4500003 , 'emp4', 'SFO', 999, 1000000);
-
 INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal) VALUES ( 4500004 , 'emp5', 'SFO', 999, 1000000);
-
 INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal) VALUES ( 4500005 , 'emp6', 'SFO', 999, 1000000);
-
 INSERT INTO emp (emp_id, emp_name, emp_city, emp_phone, emp_sal) VALUES ( 4500006 , 'emp7', 'SFO', 999, 1000000);
 
 exit
