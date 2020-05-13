@@ -1,4 +1,4 @@
-# deploy stateful app using CSI
+# deploy statefulset app using CSI
 
 ## Introduction
 
@@ -45,6 +45,12 @@ In the above exemple:
 
 - **`cassandra-sc-csi`**: unique name for the Storage Class
 - **`ds:///vmfs/volumes/vsan:52d8eb4842dbf493-41523be9cd4ff7b7/`**: datastore URL
+
+To obtain the datastore URL, go to vCenter and click on the datastore tab. Then select the desired datastore.
+The URL will be displayed as shown below:
+
+![datastore URL](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/datastore-url.png)
+
 
 Note: the annotation was defined to set the Storage Class as the default one.
 This means that if a PVC is created without referencing any Storage Class, cassandra-sc-csi will then be selected as the default one.
