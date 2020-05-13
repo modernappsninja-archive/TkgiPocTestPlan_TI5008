@@ -11,8 +11,6 @@ This page contains information to deploy a stateful applicatin using CSI storage
 
 Please refer to this link for the CSI storage plugin installation:
 
-<https://tanzu.vmware.com/content/blog/supercharging-kubernetes-storage-with-csi>
-
 ![deploy vSphere CSI Storage Plugin on a TKGI based K8s Cluster](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/tree/master/Storage/deploy%20CSI%20Storage%20Plugin)
 
 
