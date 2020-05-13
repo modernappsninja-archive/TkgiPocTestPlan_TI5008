@@ -1,4 +1,4 @@
-# deploy statefulset app using CSI
+# Deploy StatefulSet App Using CSI
 
 ## Introduction
 
