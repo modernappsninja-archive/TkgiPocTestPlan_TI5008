@@ -57,7 +57,7 @@ In the above exemple:
 To obtain the datastore URL, go to vCenter and click on the datastore tab. Then select the desired datastore.
 The URL will be displayed as shown below:
 
-![datastore URL](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/datastore-url.png)
+![datastore URL](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/images/datastore-url.png)
 
 
 Note: the annotation was defined to set the Storage Class as the default one.
@@ -143,13 +143,13 @@ persistentvolume/pvc-7e5feaff-86ef-4891-9747-bcee1c973ba2   100Gi      RWO      
 Note: 
 
 all the PV will be created as FCD (First Class Disk) and stored in the directory fcd as shown below:
-![PV-FCD](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/pv-fcd.png)
+![PV-FCD](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/images/pv-fcd.png)
 
 and you should be able to see all the PV as Container Volume on vCenter by clicking into:
 
 vSphere cluster →Monitor → Cloud Native Storage → Container Volumes
 
-![datastore URL](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/pv-container-volume.png)
+![datastore URL](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/images/pv-container-volume.png)
 
 
 ## Test: Populate Cassandra DB with new data
