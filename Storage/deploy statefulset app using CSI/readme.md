@@ -81,22 +81,30 @@ cassandra-sc-csi (default)   csi.vsphere.vmware.com   38s
 ## Step3: Create the headless service
 
 ```
-kubectl apply -f cassandra-headless-service.yaml -n cassandra-csi
+$ kubectl apply -f cassandra-headless-service.yaml -n cassandra-csi
 service/cassandra created
 ```
 
 Check:
-
+```
+$ kubectl get svc -n cassandra-csi
+NAME        TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+cassandra   ClusterIP   None         <none>        <none>    50s
+```
 
 ## Step4: Deploy the StatefulSet Cassandra DB with 3 replicas
 
 ```
-kubectl apply -f cassandra-statefulset.yaml -n cassandra-csi
+$ kubectl apply -f cassandra-statefulset.yaml -n cassandra-csi
 statefulset.apps/cassandra created
 ```
 
 Check:
-
+```
+$ kubectl get statefulset  -n cassandra-csi
+NAME        READY   AGE
+cassandra   3/3     55s
+```
 
 
 ## Overall Check
@@ -104,7 +112,7 @@ Check:
 Check pods:
 
 ```
-kubectl get pod -n cassandra-csi
+$ kubectl get pod -n cassandra-csi
 NAME          READY   STATUS    RESTARTS   AGE
 cassandra-0   1/1     Running   0          3m13s
 cassandra-1   1/1     Running   0          2m7s
@@ -114,7 +122,7 @@ cassandra-2   0/1     Running   0          45s
 Check PVC:
 
 ```
-kubectl get pvc,pv -n cassandra-csi
+$ ubectl get pvc,pv -n cassandra-csi
 NAME                                               STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS       AGE
 persistentvolumeclaim/cassandra-data-cassandra-0   Bound    pvc-625fa575-f7ed-4b00-b8a5-49bc2c22c1de   100Gi      RWO            cassandra-sc-csi   3m30s
 persistentvolumeclaim/cassandra-data-cassandra-1   Bound    pvc-372b7cbb-f600-4a5b-96f2-fb821eafdd0f   100Gi      RWO            cassandra-sc-csi   2m24s
@@ -124,7 +132,7 @@ persistentvolumeclaim/cassandra-data-cassandra-2   Bound    pvc-7e5feaff-86ef-48
 Check PV:
 
 ```
-kubectl get pv -n cassandra-csi
+$ kubectl get pv -n cassandra-csi
 NAME                                                        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                      STORAGECLASS       REASON   AGE
 persistentvolume/pvc-372b7cbb-f600-4a5b-96f2-fb821eafdd0f   100Gi      RWO            Delete           Bound    cassandra-csi/cassandra-data-cassandra-1   cassandra-sc-csi            2m22s
 persistentvolume/pvc-625fa575-f7ed-4b00-b8a5-49bc2c22c1de   100Gi      RWO            Delete           Bound    cassandra-csi/cassandra-data-cassandra-0   cassandra-sc-csi            3m28s
@@ -148,7 +156,7 @@ vSphere cluster →Monitor → Cloud Native Storage → Container Volumes
 
 Create the following file:
 
-cassandra-csi-data.txt
+cassandra-data.txt
 ```
 CREATE KEYSPACE demodb WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 2 };
 
@@ -170,7 +178,7 @@ exit
 
 Populate the database with the above data:
 ```
-cat cassandra-csi-data.txt | kubectl exec -it cassandra-0 -n cassandra-csi -- cqlsh
+cat cassandra-data.txt | kubectl exec -it cassandra-0 -n cassandra-csi -- cqlsh
 ```
 
 ## Check: Verify Cassandra DB contains the new data
@@ -187,7 +195,7 @@ exit
 Check the data is correctly stored on all 3 replicas of the Cassandra DB:
 
 ```
-cat cassandra-data.txt | kubectl exec -it cassandra-0 -n cassandra-csi -- cqlsh
-cat cassandra-data.txt | kubectl exec -it cassandra-1 -n cassandra-csi -- cqlsh
-cat cassandra-data.txt | kubectl exec -it cassandra-2 -n cassandra-csi -- cqlsh
+cat cassandra-check-data.txt | kubectl exec -it cassandra-0 -n cassandra-csi -- cqlsh
+cat cassandra-check-data.txt | kubectl exec -it cassandra-1 -n cassandra-csi -- cqlsh
+cat cassandra-check-data.txt | kubectl exec -it cassandra-2 -n cassandra-csi -- cqlsh
 ```
