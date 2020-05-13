@@ -131,6 +131,19 @@ persistentvolume/pvc-625fa575-f7ed-4b00-b8a5-49bc2c22c1de   100Gi      RWO      
 persistentvolume/pvc-7e5feaff-86ef-4891-9747-bcee1c973ba2   100Gi      RWO            Delete           Bound    cassandra-csi/cassandra-data-cassandra-2   cassandra-sc-csi            60s
 ```
 
+
+Note: 
+
+all the PV will be created as FCD (First Class Disk) and stored in the directory fcd as shown below:
+![PV-FCD](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/pv-fcd.png)
+
+and you should be able to see all the PV as Container Volume on vCenter by clicking into:
+
+vSphere cluster →Monitor → Cloud Native Storage → Container Volumes
+
+![datastore URL](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/pv-container-volume.png)
+
+
 ## Test: Populate Cassandra DB with new data
 
 Create the following file:
