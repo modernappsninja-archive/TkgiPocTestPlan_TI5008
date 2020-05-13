@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This page contains information to deploy a stateful applicatin using CSI storage plugin.
+This page contains information to deploy a statefulset application using CSI storage plugin.
 
 In this lab, we are going to deploy a Cassandra Statefulset app with 3 replicas and we are going to populate the distributed database with some data in order to check everything is working fine.
 
