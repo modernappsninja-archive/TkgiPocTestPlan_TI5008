@@ -132,6 +132,13 @@ csidriver.storage.k8s.io/csi.vsphere.vmware.com created
 
 Check:
 
+list the CSI Controller StatefulSet:
+```
+$ kubectl get statefulset -n kube-system
+NAME                     READY   AGE
+vsphere-csi-controller   1/1     24s
+```
+
 list the CSI Controller pod:
 ```
 $ kubectl get pod -n kube-system
@@ -140,12 +147,6 @@ NAME                              READY   STATUS    RESTARTS   AGE
 vsphere-csi-controller-0          5/5     Running   0          2m53s
 ```
 
-list the CSI Controller StatefulSet:
-```
-$ kubectl get statefulset -n kube-system
-NAME                     READY   AGE
-vsphere-csi-controller   1/1     24s
-```
 
 list the CSI driver:
 ```
@@ -163,6 +164,13 @@ daemonset.apps/vsphere-csi-node created
 
 Check:
 
+list the CSI Node Daemonset:
+```
+$ kubectl get daemonset -n kube-system
+NAME               DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+vsphere-csi-node   3         3         3       3            3           <none>          86s
+```
+
 list the CSI Node pods:
 ```
 $ kubectl get pod -n kube-system
@@ -174,13 +182,8 @@ vsphere-csi-node-4cs9k            3/3     Running   0          35s
 vsphere-csi-node-xgl9q            3/3     Running   0          35s
 ```
 
-list the CSI Node Daemonset:
-```
-$ kubectl get daemonset -n kube-system
-NAME               DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
-vsphere-csi-node   3         3         3       3            3           <none>          86s
-```
 
+## Overall Check
 
 list CSI nodes:
 ```
@@ -193,7 +196,6 @@ bf5fcafa-1fcd-4676-a8c8-917c84223c89   2020-04-01T18:03:13Z
 
 
 verify ProviderID has been added the nodes:
-
 ```
 $ kubectl describe nodes | grep "ProviderID"
 ProviderID:                  vsphere://4210371f-bf87-3892-6e18-f8d739b9f099
