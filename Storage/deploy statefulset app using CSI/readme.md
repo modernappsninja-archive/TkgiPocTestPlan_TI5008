@@ -143,7 +143,7 @@ persistentvolume/pvc-7e5feaff-86ef-4891-9747-bcee1c973ba2   100Gi      RWO      
 Note: 
 
 all the PV will be created as FCD (First Class Disk) and stored in the directory fcd as shown below:
-![PV-FCD](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/images/pv-fcd.png)
+![PV-FCD](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/images/pv_fcd.png)
 
 and you should be able to see all the PV as Container Volume on vCenter by clicking into:
 
