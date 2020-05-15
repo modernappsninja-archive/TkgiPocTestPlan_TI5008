@@ -58,14 +58,14 @@ In the above exemple:
 Apply the manifest file
 ```
 $ kubectl apply -f cassandra-sc-vcp.yaml -n cassandra-vcp
-storageclass.storage.k8s.io/cassandra-sc-csi created
+storageclass.storage.k8s.io/cassandra-sc-vcp created
 ```
 
 Check:
 ```
 $ kubectl get sc -n cassandra-vcp
 NAME                         PROVISIONER              AGE
-cassandra-sc-csi (default)   csi.vsphere.vmware.com   38s
+cassandra-sc-vcp   kubernetes.io/vsphere-volume   38s
 ```
 
 
@@ -114,11 +114,11 @@ cassandra-2   0/1     Running   0          45s
 Check PVC:
 
 ```
-$ kubectl get pvc,pv -n cassandra-vcp
+$ kubectl get pvc -n cassandra-vcp
 NAME                                               STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS       AGE
-persistentvolumeclaim/cassandra-data-cassandra-0   Bound    pvc-625fa575-f7ed-4b00-b8a5-49bc2c22c1de   100Gi      RWO            cassandra-sc-csi   3m30s
-persistentvolumeclaim/cassandra-data-cassandra-1   Bound    pvc-372b7cbb-f600-4a5b-96f2-fb821eafdd0f   100Gi      RWO            cassandra-sc-csi   2m24s
-persistentvolumeclaim/cassandra-data-cassandra-2   Bound    pvc-7e5feaff-86ef-4891-9747-bcee1c973ba2   100Gi      RWO            cassandra-sc-csi   62s
+persistentvolumeclaim/cassandra-data-cassandra-0   Bound    pvc-625fa575-f7ed-4b00-b8a5-49bc2c22c1de   100Gi      RWO            cassandra-sc-vcp   3m30s
+persistentvolumeclaim/cassandra-data-cassandra-1   Bound    pvc-372b7cbb-f600-4a5b-96f2-fb821eafdd0f   100Gi      RWO            cassandra-sc-vcp   2m24s
+persistentvolumeclaim/cassandra-data-cassandra-2   Bound    pvc-7e5feaff-86ef-4891-9747-bcee1c973ba2   100Gi      RWO            cassandra-sc-vcp   62s
 ```
 
 Check PV:
@@ -126,22 +126,10 @@ Check PV:
 ```
 $ kubectl get pv -n cassandra-vcp
 NAME                                                        CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                      STORAGECLASS       REASON   AGE
-persistentvolume/pvc-372b7cbb-f600-4a5b-96f2-fb821eafdd0f   100Gi      RWO            Delete           Bound    cassandra-vcp/cassandra-data-cassandra-1   cassandra-sc-csi            2m22s
-persistentvolume/pvc-625fa575-f7ed-4b00-b8a5-49bc2c22c1de   100Gi      RWO            Delete           Bound    cassandra-vcp/cassandra-data-cassandra-0   cassandra-sc-csi            3m28s
-persistentvolume/pvc-7e5feaff-86ef-4891-9747-bcee1c973ba2   100Gi      RWO            Delete           Bound    cassandra-vcp/cassandra-data-cassandra-2   cassandra-sc-csi            60s
+persistentvolume/pvc-372b7cbb-f600-4a5b-96f2-fb821eafdd0f   100Gi      RWO            Delete           Bound    cassandra-vcp/cassandra-data-cassandra-1   cassandra-sc-vcp            2m22s
+persistentvolume/pvc-625fa575-f7ed-4b00-b8a5-49bc2c22c1de   100Gi      RWO            Delete           Bound    cassandra-vcp/cassandra-data-cassandra-0   cassandra-sc-vcp            3m28s
+persistentvolume/pvc-7e5feaff-86ef-4891-9747-bcee1c973ba2   100Gi      RWO            Delete           Bound    cassandra-vcp/cassandra-data-cassandra-2   cassandra-sc-vcp            60s
 ```
-
-
-Note: 
-
-all the PV will be created as FCD (First Class Disk) and stored in the directory fcd as shown below:
-![PV-FCD](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/images/pv_fcd.png)
-
-and you should be able to see all the PV as Container Volume on vCenter by clicking into:
-
-vSphere cluster →Monitor → Cloud Native Storage → Container Volumes
-
-![datastore URL](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/blob/master/Storage/deploy%20statefulset%20app%20using%20CSI/images/pv-container-volume.png)
 
 
 ## Test: Populate Cassandra DB with new data
