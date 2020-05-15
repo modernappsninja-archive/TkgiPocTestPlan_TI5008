@@ -10,11 +10,7 @@ In this lab, we are going to deploy a Cassandra Statefulset app with 3 replicas 
 
 ### Pre-requisites
 
-- CSI storage plugin deployed on the K8s cluster.
-
-Please refer to this link for the CSI storage plugin installation:
-
-![deploy vSphere CSI Storage Plugin on a TKGI based K8s Cluster](https://github.com/ModernAppsNinja/TkgiPocTestPlan_TI5008/tree/master/Storage/deploy%20CSI%20Storage%20Plugin)
+- None. vCP storage plugin is available natively when the K8s cluster is created.
 
 
 ### Manifest Files
