@@ -122,7 +122,7 @@ cassandra-2   0/1     Running   0          45s
 Check PVC:
 
 ```
-$ ubectl get pvc,pv -n cassandra-csi
+$ kubectl get pvc,pv -n cassandra-csi
 NAME                                               STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS       AGE
 persistentvolumeclaim/cassandra-data-cassandra-0   Bound    pvc-625fa575-f7ed-4b00-b8a5-49bc2c22c1de   100Gi      RWO            cassandra-sc-csi   3m30s
 persistentvolumeclaim/cassandra-data-cassandra-1   Bound    pvc-372b7cbb-f600-4a5b-96f2-fb821eafdd0f   100Gi      RWO            cassandra-sc-csi   2m24s
